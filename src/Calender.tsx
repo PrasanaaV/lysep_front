@@ -9,23 +9,23 @@ const localizer = momentLocalizer(moment);
 const App: React.FC = () => {
     const [events, setEvents] = useState([]);
 
-        const notifications = [
-            {
-                title: "Évènement ajouté",
-                description: "Sébastien BORTENLANGER a créé l'évènement “Soutenances projet” le mercredi 12 juin.",
-                date: "12 juin"
-            },
-            {
-                title: "Évènement ajouté",
-                description: "Édith CHAN a créé l'évènement “Réunion profs” le jeudi 13 juin.",
-                date: "13 juin"
-            },
-            {
-                title: "Évènement ajouté",
-                description: "Ibler VILLEGAS a créé l'évènement “Soutenances projet” le vendredi 7 juin.",
-                date: "7 juin"
-            }
-        ];
+    const notifications = [
+        {
+            title: "Évènement ajouté",
+            description: "Sébastien BORTENLANGER a créé l'évènement “Soutenances projet” le mercredi 12 juin.",
+            date: "12 juin"
+        },
+        {
+            title: "Évènement ajouté",
+            description: "Édith CHAN a créé l'évènement “Réunion profs” le jeudi 13 juin.",
+            date: "13 juin"
+        },
+        {
+            title: "Évènement ajouté",
+            description: "Ibler VILLEGAS a créé l'évènement “Soutenances projet” le vendredi 7 juin.",
+            date: "7 juin"
+        }
+    ];
 
 
     return (
@@ -59,17 +59,14 @@ const App: React.FC = () => {
                     <span className="menuText">Paramètres</span>
                 </div>
             </div>
-            <div className="notifications-page">
-                <h2 className="notations_title">Notifications</h2>
-                {notifications.map((notification, index) => (
-                    <div className="notification-item" key={index}>
-                        <div className="notification-dot"></div>
-                        <div className="notification-content">
-                            <h3>{notification.title}</h3>
-                            <p>{notification.description}</p>
-                        </div>
-                    </div>
-                ))}
+            <div className="calendar">
+                <Calendar
+                    localizer={localizer}
+                    events={events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    style={{ height: 800, margin: "50px" }}
+                />
             </div>
         </>
     );
